@@ -2,7 +2,7 @@
 #include <vector>
 
 int rec(const std::vector<int>& field, int n, int m, int &count, int startX, int startY){
-    if(startX + count  > m || startY + count  > n) return count - 1;
+    if(startX + count > m || startY + count > n) return count - 1;
     
     for(int i = count; i >= 0; i--){
         if(field[startX + startY *m + i * m + count] == 0) return count - 1;
@@ -21,9 +21,9 @@ int najvecji(const std::vector<int>& field, int n, int m) {
     
     int maxCount = 0, count = 0;
     
-    for(int x = 0; x < n;x++){
-        for(int y = 0; y < m;y++){
-            if(field[x + y * n] == 0) continue;
+    for(int x = 0; x < m;x++){
+        for(int y = 0; y < n;y++){
+            if(field[x + y * m] == 0) continue;
             count = 1;
             count = rec(field,n,m,count,x,y) + 1;
             if(count > maxCount) maxCount = count;
